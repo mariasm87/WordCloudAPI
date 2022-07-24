@@ -3,11 +3,10 @@ from wordcloud import WordCloud, STOPWORDS
 
 app = FastAPI()
 
-text = "esto es una prueba"
-
-
 @app.get("/items/")
-async def read_item(country: int = 0, fromdate: int = 10, todate: int = 10):
-    text_dictionary = wordcloud.process_text(text)
-    word_freq={k: v for k, v in sorted(text_dictionary.items(),reverse=True, key=lambda item: item[1])}
-    return list(word_freq.items())[:5]
+async def root_path(country: int = 0, fromdate: int = 10, todate: int = 10):
+    text = "Esto es una prueba prueba y me gusta intentar mejorarla"
+    wordcloud = WordCloud(stopwords = STOPWORDS,
+                                  collocations=True,min_word_length=4,collocation_threshold=3,max_words=2).generate(text)
+    text_dict={k: v for k, v in sorted(wordcloud.process_text(text).items(),reverse=True, key=lambda item: item[1])}
+    return {"message": text_dict}
