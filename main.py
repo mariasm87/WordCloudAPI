@@ -22,9 +22,9 @@ async def root_path(country: int = 1, fromdate: str = '2022-01-01T00:00:00', tod
     out = filtered_df['clean_text']
     text = "".join(str(out))
 
-    new_string = re.sub(r'[0-9]', '', text)
-    new_string = re.sub(r'\n', '', new_string)
-    new_string = re.sub(r'Name: clean_text, Length: , dtype: object', '', new_string)
+    new_string = ''.join([i for i in text if not i.isdigit()])
+    new_string = new_string.strip()
+    new_string = new_string.replace("Name: clean_text, Length: , dtype: object","")
 
     wordcloud = WordCloud(stopwords = STOPWORDS,
                                   collocations=True,min_word_length=4,collocation_threshold=3,max_words=1).generate(new_string)

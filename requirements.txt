@@ -6,4 +6,3 @@ httptools
 wordcloud
 numpy
 pandas
-re
