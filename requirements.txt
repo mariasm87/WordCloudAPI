@@ -4,5 +4,5 @@ gunicorn
 uvloop
 httptools
 wordcloud
-pandas
+numpy
 re
