@@ -4,6 +4,7 @@ from ftplib import FTP
 import os
 import pandas as pd
 import re
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
