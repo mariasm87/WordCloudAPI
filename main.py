@@ -7,6 +7,14 @@ import re
 
 app = FastAPI()
 
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins=["*"],
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"],
+)
+
 @app.get("/items/")
 async def root_path(country: int = 1, fromdate: str = '2022-01-01T00:00:00', todate: str = '2022-01-31T00:00:00', topic: int = 0):
     if(country==1):
