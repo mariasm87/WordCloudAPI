@@ -65,4 +65,4 @@ async def root_path(country: int = 1, fromdate: str = '2022-01-01T00:00:00', tod
     wordcloud = WordCloud(stopwords = STOPWORDS,
                                   collocations=True,min_word_length=4,collocation_threshold=10,max_words=2).generate(new_string)
     text_dict={k: v for k, v in sorted(wordcloud.process_text(new_string).items(),reverse=True, key=lambda item: item[1])}
-    return {"message": text}
+    return {"message": text_dict}
